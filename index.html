@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es" class="no-js">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Heladitos para Lia 🍓 · Una invitación dulce</title>
+  <meta name="description" content="Una invitación romántica e interactiva para comer helados juntos. Un pequeño cuento dulce hecho para Lia." />
+  <meta name="theme-color" content="#1b1021" />
+  <meta name="color-scheme" content="dark" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Heladitos para Lia 🍓" />
+  <meta property="og:description" content="Tengo una pequeña sorpresa para ti, Lia... ¿vamos a comer heladito?" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='76' font-size='80'%3E%F0%9F%8D%A6%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');window.__heladitosReady=false;window.setTimeout(function(){if(!window.__heladitosReady){var i=document.getElementById('intro');if(i){i.classList.remove('is-active');}var p=document.getElementById('page');if(p){p.classList.add('is-ready');p.removeAttribute('aria-hidden');}}},15000);</script>
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- ===================== SVG SPRITE (gradients + illustrations) ===================== -->
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;overflow:hidden">
+    <defs>
+      <radialGradient id="gGlow" cx="50%" cy="48%" r="52%">
+        <stop offset="0%" stop-color="#ffe1ee" stop-opacity="0.95" />
+        <stop offset="55%" stop-color="#ff9ecb" stop-opacity="0.30" />
+        <stop offset="100%" stop-color="#ff9ecb" stop-opacity="0" />
+      </radialGradient>
+      <linearGradient id="gGlass" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.82" />
+        <stop offset="45%" stop-color="#e7d6ef" stop-opacity="0.42" />
+        <stop offset="100%" stop-color="#b68cc6" stop-opacity="0.34" />
+      </linearGradient>
+      <linearGradient id="gRim" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.25" />
+      </linearGradient>
+      <radialGradient id="gChoc" cx="38%" cy="28%" r="82%">
+        <stop offset="0%" stop-color="#b07a52" />
+        <stop offset="42%" stop-color="#7c4a2b" />
+        <stop offset="100%" stop-color="#3a2012" />
+      </radialGradient>
+      <radialGradient id="gVanilla" cx="38%" cy="28%" r="82%">
+        <stop offset="0%" stop-color="#fffdf7" />
+        <stop offset="52%" stop-color="#f7ead0" />
+        <stop offset="100%" stop-color="#dcc08a" />
+      </radialGradient>
+      <radialGradient id="gStraw" cx="38%" cy="28%" r="82%">
+        <stop offset="0%" stop-color="#ffd9e6" />
+        <stop offset="48%" stop-color="#f78db4" />
+        <stop offset="100%" stop-color="#cf4d7c" />
+      </radialGradient>
+      <radialGradient id="gBerry" cx="35%" cy="28%" r="80%">
+        <stop offset="0%" stop-color="#ff92b1" />
+        <stop offset="52%" stop-color="#e23862" />
+        <stop offset="100%" stop-color="#96102f" />
+      </radialGradient>
+      <linearGradient id="gSyrup" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#74401f" />
+        <stop offset="55%" stop-color="#47220f" />
+        <stop offset="100%" stop-color="#281206" />
+      </linearGradient>
+      <linearGradient id="gSilver" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ffffff" />
+        <stop offset="40%" stop-color="#d9dbe6" />
+        <stop offset="65%" stop-color="#9aa0b5" />
+        <stop offset="100%" stop-color="#eef0f7" />
+      </linearGradient>
+      <linearGradient id="gGold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#fff3c4" />
+        <stop offset="50%" stop-color="#ffcf6b" />
+        <stop offset="100%" stop-color="#f0a92f" />
+      </linearGradient>
+      <linearGradient id="gCone" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#e8b877" />
+        <stop offset="100%" stop-color="#b5793b" />
+      </linearGradient>
+      <linearGradient id="gLav" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#cdb6ef" />
+        <stop offset="100%" stop-color="#8f6fc9" />
+      </linearGradient>
+      <filter id="fBlur"><feGaussianBlur stdDeviation="7" /></filter>
+      <filter id="fSpark" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="2.4" result="b" />
+        <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+      <filter id="fSoftGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur stdDeviation="3.2" result="b" />
+        <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+      </filter>
+
+      <!-- ===== Hero sundae: three scoops (strawberry, vanilla, chocolate) ===== -->
+      <symbol id="il-sundae" viewBox="0 0 440 560">
+        <ellipse cx="220" cy="250" rx="205" ry="215" fill="url(#gGlow)" />
+        <!-- glass foot -->
+        <ellipse cx="220" cy="514" rx="108" ry="22" fill="url(#gGlass)" />
+        <ellipse cx="220" cy="509" rx="86" ry="15" fill="#ffffff" opacity="0.35" />
+        <!-- stem -->
+        <path d="M206 360 h28 v146 a14 14 0 0 1 -28 0 Z" fill="url(#gGlass)" />
+        <rect x="214" y="372" width="6" height="120" rx="3" fill="#ffffff" opacity="0.5" />
+        <!-- scoops -->
+        <g>
+          <circle cx="170" cy="236" r="88" fill="url(#gVanilla)" />
+          <ellipse cx="140" cy="200" rx="34" ry="22" fill="#ffffff" opacity="0.55" transform="rotate(-24 140 200)" />
+          <circle cx="288" cy="230" r="90" fill="url(#gChoc)" />
+          <ellipse cx="256" cy="192" rx="30" ry="19" fill="#ffffff" opacity="0.30" transform="rotate(-24 256 192)" />
+          <circle cx="226" cy="140" r="78" fill="url(#gStraw)" />
+          <ellipse cx="196" cy="106" rx="30" ry="20" fill="#ffffff" opacity="0.55" transform="rotate(-24 196 106)" />
+          <!-- strawberry seeds on strawberry scoop -->
+          <g fill="#ffe9f1" opacity="0.85">
+            <ellipse cx="210" cy="128" rx="3.4" ry="5" transform="rotate(18 210 128)" />
+            <ellipse cx="240" cy="120" rx="3.4" ry="5" transform="rotate(-12 240 120)" />
+            <ellipse cx="262" cy="150" rx="3.4" ry="5" transform="rotate(24 262 150)" />
+            <ellipse cx="196" cy="160" rx="3.4" ry="5" transform="rotate(-8 196 160)" />
+            <ellipse cx="232" cy="172" rx="3.4" ry="5" transform="rotate(14 232 172)" />
+          </g>
+          <!-- sprinkles on vanilla scoop -->
+          <g opacity="0.95">
+            <rect x="150" y="242" width="16" height="6" rx="3" fill="#ff90b6" transform="rotate(-20 150 242)" />
+            <rect x="176" y="262" width="16" height="6" rx="3" fill="#cdb6ef" transform="rotate(30 176 262)" />
+            <rect x="132" y="216" width="16" height="6" rx="3" fill="#fff3c4" transform="rotate(12 132 216)" />
+            <rect x="184" y="224" width="16" height="6" rx="3" fill="#9be0c6" transform="rotate(-34 184 224)" />
+          </g>
+          <!-- chocolate syrup drizzle -->
+          <path d="M288 152 C 322 168 330 200 316 236 C 356 244 366 286 344 316 C 366 330 360 364 336 374 L 292 380 C 300 348 288 322 300 296 C 268 290 262 250 288 236 C 268 216 272 176 288 152 Z"
+                fill="url(#gSyrup)" opacity="0.95" />
+          <path d="M290 158 C 314 176 316 206 306 232" fill="none" stroke="#b07a52" stroke-width="6" stroke-linecap="round" opacity="0.5" />
+          <circle cx="300" cy="330" r="7" fill="#4a2410" opacity="0.9" />
+          <circle cx="326" cy="352" r="5" fill="#4a2410" opacity="0.9" />
+          <!-- wafer sticking out -->
+          <g transform="rotate(38 300 300)">
+            <rect x="292" y="150" width="34" height="150" rx="8" fill="url(#gCone)" />
+            <g stroke="#8a5a2b" stroke-width="2" opacity="0.5">
+              <line x1="292" y1="186" x2="326" y2="186" /><line x1="292" y1="222" x2="326" y2="222" />
+              <line x1="292" y1="258" x2="326" y2="258" />
+            </g>
+          </g>
+        </g>
+        <!-- glass bowl (over scoops) -->
+        <path d="M66 300 C 78 392 140 456 220 462 C 300 456 362 392 374 300 Z" fill="url(#gGlass)" />
+        <path d="M92 314 C 108 388 156 436 220 444" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" opacity="0.55" />
+        <ellipse cx="220" cy="300" rx="154" ry="30" fill="none" stroke="url(#gRim)" stroke-width="7" />
+        <ellipse cx="220" cy="301" rx="146" ry="24" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5" />
+        <!-- strawberry on top -->
+        <g transform="translate(226 44)">
+          <path d="M0 -10 C 26 -10 44 8 42 30 C 40 52 22 66 0 66 C -22 66 -40 52 -42 30 C -44 8 -26 -10 0 -10 Z" fill="url(#gBerry)" transform="translate(0 4)" />
+          <g fill="#ffe0e9" opacity="0.9">
+            <ellipse cx="-14" cy="14" rx="3" ry="4.4" /><ellipse cx="4" cy="10" rx="3" ry="4.4" />
+            <ellipse cx="18" cy="20" rx="3" ry="4.4" /><ellipse cx="-4" cy="32" rx="3" ry="4.4" />
+            <ellipse cx="10" cy="40" rx="3" ry="4.4" />
+          </g>
+          <path d="M-6 -12 C -2 -22 2 -22 6 -12 C 20 -20 30 -12 22 -2 C 30 4 22 12 10 8 L 0 4 L -10 8 C -22 12 -30 4 -22 -2 C -30 -12 -20 -20 -6 -12 Z" fill="#8fca7c" />
+          <ellipse cx="-16" cy="16" rx="8" ry="5" fill="#ffffff" opacity="0.4" transform="rotate(-25 -16 16)" />
+        </g>
+        <!-- sparkles -->
+        <g fill="url(#gGold)" filter="url(#fSpark)">
+          <path d="M96 150 l4 14 14 4 -14 4 -4 14 -4 -14 -14 -4 14 -4 Z" />
+          <path d="M356 120 l3.4 12 12 3.4 -12 3.4 -3.4 12 -3.4 -12 -12 -3.4 12 -3.4 Z" />
+          <path d="M372 300 l2.8 10 10 2.8 -10 2.8 -2.8 10 -2.8 -10 -10 -2.8 10 -2.8 Z" />
+          <path d="M74 356 l2.6 9 9 2.6 -9 2.6 -2.6 9 -2.6 -9 -9 -2.6 9 -2.6 Z" />
+        </g>
+      </symbol>
+
+      <!-- ===== Ice cream cone (strawberry) ===== -->
+      <symbol id="il-cone" viewBox="0 0 140 230">
+        <path d="M28 96 L112 96 L70 224 Z" fill="url(#gCone)" />
+        <g stroke="#8a5a2b" stroke-width="2.4" opacity="0.4">
+          <line x1="36" y1="118" x2="96" y2="118" /><line x1="44" y1="146" x2="86" y2="146" />
+          <line x1="52" y1="172" x2="74" y2="172" />
+        </g>
+        <circle cx="70" cy="82" r="52" fill="url(#gStraw)" />
+        <ellipse cx="52" cy="62" rx="18" ry="12" fill="#ffffff" opacity="0.55" transform="rotate(-24 52 62)" />
+        <g fill="#ffe9f1" opacity="0.85">
+          <ellipse cx="60" cy="72" rx="2.4" ry="3.6" transform="rotate(18 60 72)" />
+          <ellipse cx="84" cy="66" rx="2.4" ry="3.6" transform="rotate(-12 84 66)" />
+          <ellipse cx="92" cy="94" rx="2.4" ry="3.6" transform="rotate(24 92 94)" />
+          <ellipse cx="58" cy="100" rx="2.4" ry="3.6" transform="rotate(-8 58 100)" />
+        </g>
+      </symbol>
+
+      <!-- ===== Vanilla cup ===== -->
+      <symbol id="il-cup" viewBox="0 0 170 220">
+        <path d="M40 92 C 40 168 60 200 85 200 C 110 200 130 168 130 92 Z" fill="url(#gGlass)" />
+        <ellipse cx="85" cy="92" rx="46" ry="14" fill="none" stroke="#ffffff" stroke-width="5" opacity="0.7" />
+        <circle cx="85" cy="74" r="42" fill="url(#gVanilla)" />
+        <ellipse cx="70" cy="56" rx="14" ry="9" fill="#ffffff" opacity="0.6" transform="rotate(-24 70 56)" />
+        <circle cx="85" cy="40" r="7" fill="url(#gBerry)" />
+        <rect x="95" y="24" width="8" height="18" rx="4" fill="#8fca7c" transform="rotate(24 99 33)" />
+        <rect x="60" y="30" width="8" height="18" rx="4" fill="#8fca7c" transform="rotate(-24 64 39)" />
+      </symbol>
+
+      <!-- ===== Chocolate popsicle ===== -->
+      <symbol id="il-pop" viewBox="0 0 120 250">
+        <rect x="52" y="180" width="16" height="66" rx="8" fill="#c99a6a" />
+        <rect x="24" y="10" width="72" height="180" rx="34" fill="url(#gChoc)" />
+        <rect x="34" y="22" width="18" height="150" rx="9" fill="#ffffff" opacity="0.16" />
+        <path d="M40 40 C 60 60 60 96 40 120" fill="none" stroke="url(#gSyrup)" stroke-width="9" stroke-linecap="round" opacity="0.7" />
+        <circle cx="60" cy="28" r="4" fill="#ffd9e6" opacity="0.9" />
+        <circle cx="82" cy="52" r="4" fill="#cdb6ef" opacity="0.9" />
+      </symbol>
+
+      <!-- ===== Strawberry (small) ===== -->
+      <symbol id="il-straw" viewBox="0 0 100 120">
+        <path d="M50 24 C 78 24 94 44 90 68 C 86 94 66 112 50 112 C 34 112 14 94 10 68 C 6 44 22 24 50 24 Z" fill="url(#gBerry)" />
+        <g fill="#ffe0e9" opacity="0.9">
+          <ellipse cx="34" cy="52" rx="3" ry="4.4" /><ellipse cx="52" cy="48" rx="3" ry="4.4" />
+          <ellipse cx="66" cy="60" rx="3" ry="4.4" /><ellipse cx="44" cy="74" rx="3" ry="4.4" />
+          <ellipse cx="58" cy="86" rx="3" ry="4.4" />
+        </g>
+        <path d="M44 22 C 48 12 52 12 56 22 C 70 14 80 22 72 32 C 80 38 72 46 60 42 L 50 38 L 40 42 C 28 46 20 38 28 32 C 20 22 30 14 44 22 Z" fill="#8fca7c" />
+        <ellipse cx="34" cy="54" rx="9" ry="6" fill="#ffffff" opacity="0.4" transform="rotate(-25 34 54)" />
+      </symbol>
+
+      <!-- ===== Heart ===== -->
+      <symbol id="il-heart" viewBox="0 0 100 90">
+        <path d="M50 84 C 12 56 4 34 20 20 C 33 9 46 16 50 27 C 54 16 67 9 80 20 C 96 34 88 56 50 84 Z" fill="currentColor" />
+      </symbol>
+
+      <!-- ===== Sparkle star ===== -->
+      <symbol id="il-star" viewBox="0 0 100 100">
+        <path d="M50 2 C 54 30 70 46 98 50 C 70 54 54 70 50 98 C 46 70 30 54 2 50 C 30 46 46 30 50 2 Z" fill="currentColor" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- ===================== LIVING BACKGROUND ===================== -->
+  <div id="starfield" class="starfield" aria-hidden="true"></div>
+  <div id="floaties" class="floaties" aria-hidden="true"></div>
+  <canvas id="fxCanvas" class="fx-canvas" aria-hidden="true"></canvas>
+
+  <!-- ===================== INTRO (CINEMATIC) ===================== -->
+  <div id="intro" class="screen intro is-active" role="button" tabindex="0"
+       aria-label="Empezar. Toca para descubrir la sorpresa para Lia.">
+    <div class="intro-veil" aria-hidden="true"></div>
+    <div class="intro-stage">
+      <div class="intro-sundae" aria-hidden="true">
+        <svg class="sundae" viewBox="0 0 440 560" role="img">
+          <use href="#il-sundae"></use>
+        </svg>
+        <span class="halo"></span>
+      </div>
+      <p class="intro-eyebrow">Una tarde, un helado, una sorpresa</p>
+      <h1 class="intro-line">Tengo una pequeña sorpresa para ti, Lia... 🍓</h1>
+      <p class="intro-tap">
+        <span class="tap-ring" aria-hidden="true"></span>
+        Toca para descubrirla
+      </p>
+      <p class="intro-hint">o pulsa Enter / Espacio</p>
+    </div>
+    <div class="intro-skip">
+      <button id="introSkip" class="link-btn" type="button">Saltar introducción</button>
+    </div>
+  </div>
+
+  <!-- ===================== MAIN PAGE ===================== -->
+  <main id="page" class="page" aria-hidden="true">
+
+    <!-- ---------- INVITACIÓN ---------- -->
+    <section id="invitacion" class="section hero" aria-labelledby="hero-title">
+      <div class="hero-deco" aria-hidden="true">
+        <svg class="deco-drip" viewBox="0 0 440 560"><use href="#il-sundae"></use></svg>
+      </div>
+
+      <article class="glass-card reveal">
+        <p class="eyebrow">UNA INVITACIÓN ESPECIAL</p>
+        <h1 id="hero-title" class="hero-title">
+          Para <span class="script-name">Lia</span> <span class="berry">🍓</span>
+        </h1>
+
+        <div class="hero-illu" aria-hidden="true">
+          <svg class="sundae sundae--card" viewBox="0 0 440 560"><use href="#il-sundae"></use></svg>
+        </div>
+
+        <p class="question">¿Vamos a comer heladito?</p>
+        <p class="msg">
+          Se me ocurrió un plan dulce: tú, yo, unos helados deliciosos y una tarde bonita
+          para compartir juntos. Me encantaría vivir ese pequeño momento contigo. ❤️
+        </p>
+
+        <div class="choices">
+          <button id="btnYes" class="btn btn-yes" type="button">
+            <span class="btn-shine" aria-hidden="true"></span>
+            SÍ, VAMOS 💗
+          </button>
+          <button id="btnNo" class="btn btn-no" type="button">NO, GRACIAS 🙈</button>
+        </div>
+
+        <p id="whisper" class="whisper" aria-hidden="true">Un ratito dulce basta para una sonrisa ✨</p>
+      </article>
+
+      <a class="scroll-cue" href="#galeria" aria-label="Ver más: galería de helados">
+        <span>Descubre más</span>
+        <span class="scroll-chevron" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ---------- GALERÍA ---------- -->
+    <section id="galeria" class="section" aria-labelledby="gal-title">
+      <header class="section-head reveal">
+        <p class="eyebrow">UN POQUITO DE MAGIA DULCE</p>
+        <h2 id="gal-title" class="section-title">Sabores que acompañan la tarde</h2>
+        <p class="section-sub">Cuatro heladitos imaginados para ti, cada uno con su propia frase.</p>
+      </header>
+
+      <div class="gallery">
+        <figure class="gal-card reveal">
+          <div class="gal-media" data-fallback="🍓">
+            <img class="g-img" loading="lazy" decoding="async" width="900" height="1100"
+                 alt="Helado de fresa con textura cremosa y tonos rosados"
+                 src="https://images.pexels.com/photos/5535554/pexels-photo-5535554.jpeg?auto=compress&cs=tinysrgb&w=900" />
+          </div>
+          <figcaption>
+            <span class="gal-tag">Fresa</span>
+            <span class="gal-phrase">Un heladito para alegrar el día</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gal-card reveal">
+          <div class="gal-media" data-fallback="🍫">
+            <img class="g-img" loading="lazy" decoding="async" width="900" height="1100"
+                 alt="Copa de helado de chocolate con barquillos"
+                 src="https://images.pexels.com/photos/38371324/pexels-photo-38371324.jpeg?auto=compress&cs=tinysrgb&w=900" />
+          </div>
+          <figcaption>
+            <span class="gal-tag">Chocolate</span>
+            <span class="gal-phrase">Una tarde para recordar</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gal-card reveal">
+          <div class="gal-media" data-fallback="🍦">
+            <img class="g-img" loading="lazy" decoding="async" width="900" height="1100"
+                 alt="Copa de helado de vainilla con sirope y virutas"
+                 src="https://images.pexels.com/photos/30648974/pexels-photo-30648974.jpeg?auto=compress&cs=tinysrgb&w=900" />
+          </div>
+          <figcaption>
+            <span class="gal-tag">Vainilla</span>
+            <span class="gal-phrase">Algo dulce para compartir</span>
+          </figcaption>
+        </figure>
+
+        <figure class="gal-card reveal">
+          <div class="gal-media" data-fallback="🍨">
+            <img class="g-img" loading="lazy" decoding="async" width="900" height="1100"
+                 alt="Copa de helado con toppings de colores y sirope"
+                 src="https://images.pexels.com/photos/16560455/pexels-photo-16560455.jpeg?auto=compress&cs=tinysrgb&w=900" />
+          </div>
+          <figcaption>
+            <span class="gal-tag">Con toppings</span>
+            <span class="gal-phrase">La mejor parte es la compañía</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ---------- EL PLAN PERFECTO ---------- -->
+    <section id="plan" class="section" aria-labelledby="plan-title">
+      <header class="section-head reveal">
+        <p class="eyebrow">EL PLAN PERFECTO</p>
+        <h2 id="plan-title" class="section-title">Así me imagino nuestra tarde</h2>
+      </header>
+
+      <div class="plan-grid">
+        <article class="plan-card reveal">
+          <div class="plan-illu" aria-hidden="true">
+            <svg viewBox="0 0 140 230"><use href="#il-cone"></use></svg>
+          </div>
+          <h3>Un helado rico</h3>
+          <p>Del sabor que más te guste, con calma y sin prisa.</p>
+        </article>
+
+        <article class="plan-card reveal">
+          <div class="plan-illu" aria-hidden="true">
+            <svg viewBox="0 0 170 220"><use href="#il-cup"></use></svg>
+          </div>
+          <h3>Buena conversación</h3>
+          <p>De esas charlas que hacen que el tiempo vuele.</p>
+        </article>
+
+        <article class="plan-card reveal">
+          <div class="plan-illu" aria-hidden="true">
+            <svg viewBox="0 0 100 90" class="illu-heart"><use href="#il-heart"></use></svg>
+          </div>
+          <h3>Una tarde tranquila</h3>
+          <p>Sin planes complicados, solo compartir un momento bonito.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ---------- MÚSICA (opcional, preparada) ---------- -->
+    <section id="musica" class="section" aria-labelledby="music-title">
+      <header class="section-head reveal">
+        <p class="eyebrow">BANDA SONORA (OPCIONAL)</p>
+        <h2 id="music-title" class="section-title">La música de nuestra tarde</h2>
+        <p class="section-sub">La música nunca se reproduce sola. Elige tú cuándo suena.</p>
+      </header>
+
+      <div class="glass-card music-box reveal">
+        <p class="music-note">
+          Muy pronto añadiré aquí la canción perfecta para nuestra cita. Si quieres ponerle
+          banda sonora, hay un botón preparado más abajo. <span aria-hidden="true">🎧</span>
+        </p>
+        <div id="musicSlot" class="music-slot" aria-live="polite">
+          <p class="music-empty">Aún no hay canción elegida.</p>
+        </div>
+        <button id="btnMusic" class="btn btn-ghost" type="button" aria-pressed="false">
+          <span class="music-ico" aria-hidden="true">▶</span>
+          <span class="music-label">Activar música</span>
+        </button>
+        <p class="music-hint">Puedes desactivarla cuando quieras. Silencio por defecto.</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p class="footer-line">Hecho con cariño por Giu 💗</p>
+      <p class="footer-sub">Una invitación pequeñita, hecha solo para Lia.</p>
+    </footer>
+  </main>
+
+  <!-- ===================== ESTÁ BIEN (NO) ===================== -->
+  <div id="noScreen" class="screen overlay" role="dialog" aria-modal="true" aria-labelledby="no-title">
+    <div class="glass-card panel">
+      <div class="panel-illu" aria-hidden="true">
+        <svg viewBox="0 0 440 560" class="sundae soft"><use href="#il-sundae"></use></svg>
+      </div>
+      <h2 id="no-title" class="panel-title">Está bien, Lia 💗</h2>
+      <p class="panel-msg">
+        Si algún día te apetece compartir unos helados conmigo,
+        la invitación seguirá aquí. 🍦
+      </p>
+      <button id="btnBack" class="btn btn-ghost" type="button">Volver a la invitación</button>
+    </div>
+  </div>
+
+  <!-- ===================== ¿SEGURA? ===================== -->
+  <div id="sure" class="screen overlay" role="dialog" aria-modal="true" aria-labelledby="sure-title">
+    <div class="glass-card panel">
+      <div class="panel-illu" aria-hidden="true">
+        <svg viewBox="0 0 120 120" class="heart-illu"><use href="#il-heart"></use></svg>
+      </div>
+      <h2 id="sure-title" class="panel-title">¿Estás 100% segura de que quieres decir que sí? 🥹🍦</h2>
+      <p class="panel-msg">Prometo que será una tarde bonita.</p>
+      <div class="choices choices--stack">
+        <button id="btnSure" class="btn btn-yes" type="button">
+          <span class="btn-shine" aria-hidden="true"></span>
+          ¡Sí, totalmente! ❤️
+        </button>
+        <button id="btnThink" class="btn btn-ghost" type="button">Déjame pensarlo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== PANTALLA FINAL ===================== -->
+  <div id="finalScreen" class="screen overlay final" role="dialog" aria-modal="true" aria-labelledby="final-title">
+    <div class="final-inner">
+      <div class="final-glow" aria-hidden="true"></div>
+
+      <div class="final-illu" aria-hidden="true">
+        <svg viewBox="0 0 440 560" class="sundae final-sundae"><use href="#il-sundae"></use></svg>
+      </div>
+
+      <h2 id="final-title" class="final-title">¡Tenemos una cita de heladitos pendiente! 🍦❤️</h2>
+      <p class="final-msg">
+        Tú eliges el día y la hora, y vamos a pasar una tarde bonita comiendo helados juntos. ✨
+      </p>
+      <p class="final-sub">
+        Unos helados ricos, buenas conversaciones, muchas sonrisas y un recuerdo bonito para los dos.
+      </p>
+
+      <div class="glass-card date-panel">
+        <p class="date-heading">¿Cuándo te viene bien? <span class="date-opt">(opcional)</span></p>
+        <div class="date-grid">
+          <label class="field">
+            <span class="field-label">Fecha</span>
+            <input id="dateInput" type="date" class="field-input" autocomplete="off" />
+          </label>
+          <label class="field">
+            <span class="field-label">Hora</span>
+            <input id="timeInput" type="time" class="field-input" autocomplete="off" />
+          </label>
+        </div>
+
+        <p id="dateConfirm" class="date-confirm" aria-live="polite"></p>
+
+        <div class="date-actions">
+          <button id="btnEditDate" class="btn btn-ghost btn-sm" type="button" hidden>Modificar fecha y hora</button>
+          <button id="btnFinalSave" class="btn btn-yes btn-sm" type="button">Guardar nuestro plan 💗</button>
+        </div>
+        <p class="date-hint">
+          Nada se envía ni se guarda en ningún servidor: es solo para recordarlo tú y yo, aquí mismo.
+          Puedes dejar los campos vacíos si aún no lo sabes.
+        </p>
+      </div>
+
+      <button id="btnRestart" class="link-btn final-restart" type="button">Volver a empezar</button>
+    </div>
+  </div>
+
+  <!-- ===================== FLOATING UI ===================== -->
+  <div id="sparkleCounter" class="sparkle-counter">
+    <svg viewBox="0 0 100 100" aria-hidden="true" class="sc-star"><use href="#il-star"></use></svg>
+    <span id="sparkleCount">0</span>
+    <span class="sc-label">chispitas</span>
+  </div>
+
+  <button id="backToTop" class="back-top" type="button" aria-label="Volver arriba">
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <div id="srAnnounce" class="sr-only" role="status" aria-live="polite"></div>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
