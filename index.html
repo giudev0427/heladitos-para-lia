@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Heladitos para Lia 🍓 · Una invitación dulce</title>
-  <meta name="description" content="Una invitación romántica e interactiva para comer helados juntos. Un pequeño cuento dulce hecho para Lia." />
+  <title>Un plan dulce para Lia 🍓🍦 · Este jueves</title>
+  <meta name="description" content="Lia, tengo un plan dulce para ti: este jueves te invito a comer unos heladitos. Tú pones la hora. Un detalle digital hecho con cariño." />
   <meta name="theme-color" content="#1b1021" />
   <meta name="color-scheme" content="dark" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Heladitos para Lia 🍓" />
-  <meta property="og:description" content="Tengo una pequeña sorpresa para ti, Lia... ¿vamos a comer heladito?" />
+  <meta property="og:title" content="Un plan dulce para Lia 🍓🍦" />
+  <meta property="og:description" content="Este jueves te invito unos heladitos. Tú pones la hora, yo las ganas." />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='76' font-size='80'%3E%F0%9F%8D%A6%3C/text%3E%3C/svg%3E" />
@@ -235,9 +235,8 @@
   <div id="floaties" class="floaties" aria-hidden="true"></div>
   <canvas id="fxCanvas" class="fx-canvas" aria-hidden="true"></canvas>
 
-  <!-- ===================== INTRO (CINEMATIC) ===================== -->
-  <div id="intro" class="screen intro is-active" role="button" tabindex="0"
-       aria-label="Empezar. Toca para descubrir la sorpresa para Lia.">
+  <!-- ===================== ENTRADA (CINEMATOGRÁFICA) ===================== -->
+  <div id="intro" class="screen intro is-active" aria-labelledby="intro-title">
     <div class="intro-veil" aria-hidden="true"></div>
     <div class="intro-stage">
       <div class="intro-sundae" aria-hidden="true">
@@ -246,20 +245,17 @@
         </svg>
         <span class="halo"></span>
       </div>
-      <p class="intro-eyebrow">Una tarde, un helado, una sorpresa</p>
-      <h1 class="intro-line">Tengo una pequeña sorpresa para ti, Lia... 🍓</h1>
-      <p class="intro-tap">
-        <span class="tap-ring" aria-hidden="true"></span>
-        Toca para descubrirla
-      </p>
-      <p class="intro-hint">o pulsa Enter / Espacio</p>
-    </div>
-    <div class="intro-skip">
-      <button id="introSkip" class="link-btn" type="button">Saltar introducción</button>
+      <p class="intro-eyebrow">Una invitación dulce</p>
+      <h1 id="intro-title" class="intro-line">Lia, tengo un plan dulce para ti...</h1>
+      <button id="introStart" class="btn btn-yes intro-btn" type="button">
+        <span class="btn-shine" aria-hidden="true"></span>
+        Descubrir mi invitación 🍓
+      </button>
+      <p class="intro-hint">o entra tocando cualquier parte de la pantalla</p>
     </div>
   </div>
 
-  <!-- ===================== MAIN PAGE ===================== -->
+  <!-- ===================== PÁGINA PRINCIPAL ===================== -->
   <main id="page" class="page" aria-hidden="true">
 
     <!-- ---------- INVITACIÓN ---------- -->
@@ -269,30 +265,34 @@
       </div>
 
       <article class="glass-card reveal">
-        <p class="eyebrow">UNA INVITACIÓN ESPECIAL</p>
+        <p class="eyebrow">UN PEQUEÑO PLAN PARA TI</p>
         <h1 id="hero-title" class="hero-title">
-          Para <span class="script-name">Lia</span> <span class="berry">🍓</span>
+          Un plan dulce para <span class="script-name">Lia</span> <span class="berry">🍓🍦</span>
         </h1>
 
         <div class="hero-illu" aria-hidden="true">
           <svg class="sundae sundae--card" viewBox="0 0 440 560"><use href="#il-sundae"></use></svg>
         </div>
 
-        <p class="question">¿Vamos a comer heladito?</p>
-        <p class="msg">
-          Se me ocurrió un plan dulce: tú, yo, unos helados deliciosos y una tarde bonita
-          para compartir juntos. Me encantaría vivir ese pequeño momento contigo. ❤️
+        <blockquote class="love-letter">
+          <p>Este jueves quiero invitarte a comer unos heladitos. ❤️</p>
+          <p>Tú eliges la hora y yo pongo las ganas de compartir una tarde bonita contigo.</p>
+          <p>¿Te parece si nos regalamos un ratito para disfrutar de algo dulce, conversar y pasarla bonito? ✨</p>
+        </blockquote>
+
+        <p class="highlight-line">
+          Este jueves, tú pones la hora y yo te invito los helados. 🍦💗
         </p>
 
         <div class="choices">
-          <button id="btnYes" class="btn btn-yes" type="button">
+          <button id="btnLoveIt" class="btn btn-yes" type="button">
             <span class="btn-shine" aria-hidden="true"></span>
-            SÍ, VAMOS 💗
+            🍦 ¡Me encantaría!
           </button>
-          <button id="btnNo" class="btn btn-no" type="button">NO, GRACIAS 🙈</button>
+          <button id="btnLater" class="btn btn-ghost" type="button">Te confirmo después 💌</button>
         </div>
 
-        <p id="whisper" class="whisper" aria-hidden="true">Un ratito dulce basta para una sonrisa ✨</p>
+        <p id="whisper" class="whisper" aria-hidden="true">Un jueves cualquiera puede volverse inolvidable 🍓</p>
       </article>
 
       <a class="scroll-cue" href="#galeria" aria-label="Ver más: galería de helados">
@@ -305,7 +305,7 @@
     <section id="galeria" class="section" aria-labelledby="gal-title">
       <header class="section-head reveal">
         <p class="eyebrow">UN POQUITO DE MAGIA DULCE</p>
-        <h2 id="gal-title" class="section-title">Sabores que acompañan la tarde</h2>
+        <h2 id="gal-title" class="section-title">Sabores para nuestra tarde</h2>
         <p class="section-sub">Cuatro heladitos imaginados para ti, cada uno con su propia frase.</p>
       </header>
 
@@ -360,11 +360,11 @@
       </div>
     </section>
 
-    <!-- ---------- EL PLAN PERFECTO ---------- -->
+    <!-- ---------- EL PLAN ---------- -->
     <section id="plan" class="section" aria-labelledby="plan-title">
       <header class="section-head reveal">
         <p class="eyebrow">EL PLAN PERFECTO</p>
-        <h2 id="plan-title" class="section-title">Así me imagino nuestra tarde</h2>
+        <h2 id="plan-title" class="section-title">Así me imagino nuestro jueves</h2>
       </header>
 
       <div class="plan-grid">
@@ -388,8 +388,8 @@
           <div class="plan-illu" aria-hidden="true">
             <svg viewBox="0 0 100 90" class="illu-heart"><use href="#il-heart"></use></svg>
           </div>
-          <h3>Una tarde tranquila</h3>
-          <p>Sin planes complicados, solo compartir un momento bonito.</p>
+          <h3>Una tarde bonita</h3>
+          <p>Sin planes complicados, solo compartir un momento.</p>
         </article>
       </div>
     </section>
@@ -404,7 +404,7 @@
 
       <div class="glass-card music-box reveal">
         <p class="music-note">
-          Muy pronto añadiré aquí la canción perfecta para nuestra cita. Si quieres ponerle
+          Muy pronto añadiré aquí la canción perfecta para nuestro jueves. Si quieres ponerle
           banda sonora, hay un botón preparado más abajo. <span aria-hidden="true">🎧</span>
         </p>
         <div id="musicSlot" class="music-slot" aria-live="polite">
@@ -412,7 +412,7 @@
         </div>
         <button id="btnMusic" class="btn btn-ghost" type="button" aria-pressed="false">
           <span class="music-ico" aria-hidden="true">▶</span>
-          <span class="music-label">Activar música</span>
+          <span class="music-label">Activar música suave</span>
         </button>
         <p class="music-hint">Puedes desactivarla cuando quieras. Silencio por defecto.</p>
       </div>
@@ -424,86 +424,43 @@
     </footer>
   </main>
 
-  <!-- ===================== ESTÁ BIEN (NO) ===================== -->
-  <div id="noScreen" class="screen overlay" role="dialog" aria-modal="true" aria-labelledby="no-title">
-    <div class="glass-card panel">
-      <div class="panel-illu" aria-hidden="true">
-        <svg viewBox="0 0 440 560" class="sundae soft"><use href="#il-sundae"></use></svg>
-      </div>
-      <h2 id="no-title" class="panel-title">Está bien, Lia 💗</h2>
-      <p class="panel-msg">
-        Si algún día te apetece compartir unos helados conmigo,
-        la invitación seguirá aquí. 🍦
-      </p>
-      <button id="btnBack" class="btn btn-ghost" type="button">Volver a la invitación</button>
-    </div>
-  </div>
-
-  <!-- ===================== ¿SEGURA? ===================== -->
-  <div id="sure" class="screen overlay" role="dialog" aria-modal="true" aria-labelledby="sure-title">
+  <!-- ===================== ¡ME ENCANTARÍA! ===================== -->
+  <div id="respYes" class="screen overlay" role="dialog" aria-modal="true" aria-labelledby="yes-title">
     <div class="glass-card panel">
       <div class="panel-illu" aria-hidden="true">
         <svg viewBox="0 0 120 120" class="heart-illu"><use href="#il-heart"></use></svg>
       </div>
-      <h2 id="sure-title" class="panel-title">¿Estás 100% segura de que quieres decir que sí? 🥹🍦</h2>
-      <p class="panel-msg">Prometo que será una tarde bonita.</p>
-      <div class="choices choices--stack">
-        <button id="btnSure" class="btn btn-yes" type="button">
-          <span class="btn-shine" aria-hidden="true"></span>
-          ¡Sí, totalmente! ❤️
-        </button>
-        <button id="btnThink" class="btn btn-ghost" type="button">Déjame pensarlo</button>
+      <h2 id="yes-title" class="panel-title">¡Qué bonito! 💗</h2>
+      <p class="panel-msg">
+        Entonces queda pendiente nuestro heladito de este jueves.
+        Tú dime a qué hora te viene bien y nos organizamos. 🍓✨
+      </p>
+
+      <div class="resp-time">
+        <label class="field">
+          <span class="field-label">¿A qué hora te viene bien? <span class="date-opt">(opcional)</span></span>
+          <input id="timeInput" type="time" class="field-input" autocomplete="off" />
+        </label>
+        <p id="timeConfirm" class="date-confirm" aria-live="polite"></p>
       </div>
+
+      <button id="btnBackInvite1" class="btn btn-ghost" type="button">Volver a la invitación</button>
     </div>
   </div>
 
-  <!-- ===================== PANTALLA FINAL ===================== -->
-  <div id="finalScreen" class="screen overlay final" role="dialog" aria-modal="true" aria-labelledby="final-title">
-    <div class="final-inner">
-      <div class="final-glow" aria-hidden="true"></div>
-
-      <div class="final-illu" aria-hidden="true">
-        <svg viewBox="0 0 440 560" class="sundae final-sundae"><use href="#il-sundae"></use></svg>
+  <!-- ===================== TE CONFIRMO DESPUÉS ===================== -->
+  <div id="respLater" class="screen overlay" role="dialog" aria-modal="true" aria-labelledby="later-title">
+    <div class="glass-card panel">
+      <div class="panel-illu" aria-hidden="true">
+        <svg viewBox="0 0 440 560" class="sundae soft"><use href="#il-sundae"></use></svg>
       </div>
-
-      <h2 id="final-title" class="final-title">¡Tenemos una cita de heladitos pendiente! 🍦❤️</h2>
-      <p class="final-msg">
-        Tú eliges el día y la hora, y vamos a pasar una tarde bonita comiendo helados juntos. ✨
-      </p>
-      <p class="final-sub">
-        Unos helados ricos, buenas conversaciones, muchas sonrisas y un recuerdo bonito para los dos.
-      </p>
-
-      <div class="glass-card date-panel">
-        <p class="date-heading">¿Cuándo te viene bien? <span class="date-opt">(opcional)</span></p>
-        <div class="date-grid">
-          <label class="field">
-            <span class="field-label">Fecha</span>
-            <input id="dateInput" type="date" class="field-input" autocomplete="off" />
-          </label>
-          <label class="field">
-            <span class="field-label">Hora</span>
-            <input id="timeInput" type="time" class="field-input" autocomplete="off" />
-          </label>
-        </div>
-
-        <p id="dateConfirm" class="date-confirm" aria-live="polite"></p>
-
-        <div class="date-actions">
-          <button id="btnEditDate" class="btn btn-ghost btn-sm" type="button" hidden>Modificar fecha y hora</button>
-          <button id="btnFinalSave" class="btn btn-yes btn-sm" type="button">Guardar nuestro plan 💗</button>
-        </div>
-        <p class="date-hint">
-          Nada se envía ni se guarda en ningún servidor: es solo para recordarlo tú y yo, aquí mismo.
-          Puedes dejar los campos vacíos si aún no lo sabes.
-        </p>
-      </div>
-
-      <button id="btnRestart" class="link-btn final-restart" type="button">Volver a empezar</button>
+      <h2 id="later-title" class="panel-title">Claro, Lia 💗</h2>
+      <p class="panel-msg">Me dices cuando puedas y coordinamos la hora.</p>
+      <button id="btnBackInvite2" class="btn btn-ghost" type="button">Volver a la invitación</button>
     </div>
   </div>
 
-  <!-- ===================== FLOATING UI ===================== -->
+  <!-- ===================== UI FLOTANTE ===================== -->
   <div id="sparkleCounter" class="sparkle-counter">
     <svg viewBox="0 0 100 100" aria-hidden="true" class="sc-star"><use href="#il-star"></use></svg>
     <span id="sparkleCount">0</span>
@@ -515,6 +472,9 @@
   </button>
 
   <div id="srAnnounce" class="sr-only" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>if(window.tailwind){window.tailwind.config={corePlugins:{preflight:false}};}</script>
 
   <script src="assets/js/main.js" defer></script>
 </body>

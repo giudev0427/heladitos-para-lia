@@ -1,5 +1,5 @@
 /* =========================================================================
-   Heladitos para Lia — interactions
+   Un plan dulce para Lia — interactions
    Vanilla JS. No build step. Progressive: if anything fails, the page
    still shows the invitation (see .no-js fallback + safety timer).
    ========================================================================= */
@@ -11,11 +11,9 @@
   var qsa = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
   var rand = function (min, max) { return min + Math.random() * (max - min); };
   var pick = function (arr) { return arr[(Math.random() * arr.length) | 0]; };
-  var clamp = function (v, a, b) { return Math.min(b, Math.max(a, v)); };
 
   var motionQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
   var reduceMotion = !!(motionQuery && motionQuery.matches);
-  var isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints || 0) > 0;
 
   var $ = {
     html: document.documentElement,
@@ -24,20 +22,15 @@
     starfield: qs('#starfield'),
     floaties: qs('#floaties'),
     canvas: qs('#fxCanvas'),
-    btnYes: qs('#btnYes'),
-    btnNo: qs('#btnNo'),
-    noScreen: qs('#noScreen'),
-    btnBack: qs('#btnBack'),
-    sure: qs('#sure'),
-    btnSure: qs('#btnSure'),
-    btnThink: qs('#btnThink'),
-    finalScreen: qs('#finalScreen'),
-    btnRestart: qs('#btnRestart'),
-    dateInput: qs('#dateInput'),
+    introStart: qs('#introStart'),
+    btnLoveIt: qs('#btnLoveIt'),
+    btnLater: qs('#btnLater'),
+    respYes: qs('#respYes'),
+    respLater: qs('#respLater'),
+    btnBackInvite1: qs('#btnBackInvite1'),
+    btnBackInvite2: qs('#btnBackInvite2'),
     timeInput: qs('#timeInput'),
-    dateConfirm: qs('#dateConfirm'),
-    btnEditDate: qs('#btnEditDate'),
-    btnFinalSave: qs('#btnFinalSave'),
+    timeConfirm: qs('#timeConfirm'),
     whisper: qs('#whisper'),
     counter: qs('#sparkleCounter'),
     count: qs('#sparkleCount'),
@@ -131,7 +124,7 @@
         Music.stop();
         $.musicBtn.setAttribute('aria-pressed', 'false');
         if (ico) ico.textContent = '▶';
-        if (label) label.textContent = 'Activar música';
+        if (label) label.textContent = 'Activar música suave';
         announce('Música desactivada.');
       } else {
         var ok = Music.start();
@@ -168,11 +161,13 @@
 
   /* ============================ FLOATING ICE CREAMS ============================ */
   var FLOAT_ART = [
-    { id: 'il-cone', ar: 1.64 },
-    { id: 'il-cup', ar: 1.29 },
-    { id: 'il-pop', ar: 2.08 },
-    { id: 'il-straw', ar: 1.2 },
-    { id: 'il-sundae', ar: 1.27 }
+    { id: 'il-cone', vb: '0 0 140 230' },
+    { id: 'il-cup', vb: '0 0 170 220' },
+    { id: 'il-pop', vb: '0 0 120 250' },
+    { id: 'il-straw', vb: '0 0 100 120' },
+    { id: 'il-heart', vb: '0 0 100 90' },
+    { id: 'il-star', vb: '0 0 100 100' },
+    { id: 'il-sundae', vb: '0 0 440 560' }
   ];
 
   function buildFloaties() {
@@ -182,10 +177,9 @@
     for (var i = 0; i < count; i++) {
       var art = pick(FLOAT_ART);
       var wrap = document.createElement('div');
-      wrap.className = 'floaty';
-      var w = rand(38, window.innerWidth < 640 ? 88 : 132);
+      wrap.className = 'floaty' + (art.id === 'il-heart' ? ' floaty--heart' : (art.id === 'il-star' ? ' floaty--star' : ''));
+      var w = rand(30, window.innerWidth < 640 ? 78 : 118);
       wrap.style.setProperty('--w', w.toFixed(0) + 'px');
-      wrap.style.setProperty('--ar', art.ar);
       wrap.style.left = rand(-2, 96).toFixed(2) + '%';
       wrap.style.top = rand(2, 92).toFixed(2) + '%';
       wrap.style.setProperty('--dur', rand(12, 26).toFixed(1) + 's');
@@ -196,17 +190,10 @@
       wrap.style.setProperty('--rot1', rand(-6, 18).toFixed(0) + 'deg');
       wrap.style.setProperty('--op-min', rand(0.08, 0.18).toFixed(2));
       wrap.style.setProperty('--op-max', rand(0.3, 0.6).toFixed(2));
-      wrap.innerHTML = '<svg viewBox="' + viewBoxFor(art.id) + '" aria-hidden="true"><use href="#' + art.id + '"></use></svg>';
+      wrap.innerHTML = '<svg viewBox="' + art.vb + '" aria-hidden="true"><use href="#' + art.id + '"></use></svg>';
       frag.appendChild(wrap);
     }
     $.floaties.appendChild(frag);
-  }
-  function viewBoxFor(id) {
-    if (id === 'il-cone') return '0 0 140 230';
-    if (id === 'il-cup') return '0 0 170 220';
-    if (id === 'il-pop') return '0 0 120 250';
-    if (id === 'il-straw') return '0 0 100 120';
-    return '0 0 440 560';
   }
 
   /* ============================ FX CANVAS ============================ */
@@ -301,22 +288,23 @@
     }
   }
 
+  /* Gentle celebration: hearts + sparkles drifting up (never blocks the UI). */
   function celebrate() {
     if (!FX.ctx) return;
-    var n = reduceMotion ? 0 : (window.innerWidth < 640 ? 90 : 170);
+    var n = reduceMotion ? 0 : (window.innerWidth < 640 ? 70 : 130);
     for (var i = 0; i < n; i++) {
-      var fromTop = Math.random() > 0.42;
+      var fromTop = Math.random() > 0.6;
       if (fromTop) {
         FX.add({
-          x: rand(0, FX.W), y: rand(-60, -10), vx: rand(-1.4, 1.4), vy: rand(1.6, 4.2),
-          g: 0.045, fr: 0.995, life: 0, maxLife: rand(120, 240), s: rand(7, 15),
-          rot: rand(0, 6), vr: rand(-0.18, 0.18),
-          color: pick(CONFETTI_COLORS), shape: Math.random() > 0.55 ? 'rect' : (Math.random() > 0.5 ? 'heart' : 'star'), alpha: 1
+          x: rand(0, FX.W), y: rand(-60, -10), vx: rand(-1.2, 1.2), vy: rand(1.4, 3.4),
+          g: 0.04, fr: 0.995, life: 0, maxLife: rand(120, 220), s: rand(6, 13),
+          rot: rand(0, 6), vr: rand(-0.16, 0.16),
+          color: pick(CONFETTI_COLORS), shape: Math.random() > 0.5 ? 'heart' : 'star', alpha: 1
         });
       } else {
         FX.add({
-          x: rand(0, FX.W), y: FX.H + rand(0, 80), vx: rand(-0.6, 0.6), vy: -rand(0.9, 2.4),
-          g: -0.005, fr: 0.999, life: 0, maxLife: rand(150, 300), s: rand(12, 26),
+          x: rand(0, FX.W), y: FX.H + rand(0, 80), vx: rand(-0.6, 0.6), vy: -rand(0.9, 2.2),
+          g: -0.004, fr: 0.999, life: 0, maxLife: rand(150, 300), s: rand(12, 26),
           rot: rand(-0.3, 0.3), vr: rand(-0.04, 0.04), sway: rand(0.2, 0.7), seed: rand(0, 100),
           color: pick(['#ef5f97', '#ff9bc4', '#ffcf6b', '#f78bb4']), shape: 'heart', alpha: 0.92
         });
@@ -333,7 +321,7 @@
     lastFocus = document.activeElement;
     el.classList.add('is-active');
     el.removeAttribute('aria-hidden');
-    if (focusEl) window.setTimeout(function () { focusEl.focus(); }, 400);
+    if (focusEl) window.setTimeout(function () { focusEl.focus(); }, 420);
   }
   function hide(el, restoreFocus) {
     if (!el) return;
@@ -374,7 +362,7 @@
     $.page.removeAttribute('aria-hidden');
     if ($.counter) $.counter.classList.add('is-visible');
     window.__heladitosReady = true;
-    announce('Invitación abierta. ¿Vamos a comer heladito?');
+    announce('Invitación abierta. Este jueves, tú pones la hora.');
     startWhispers();
   }
 
@@ -383,21 +371,19 @@
   function setupIntro() {
     if (!$.intro) return;
     $.intro.addEventListener('click', startIntro);
-    $.intro.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); startIntro(); }
-    });
-    var skip = qs('#introSkip');
-    if (skip) skip.addEventListener('click', function (e) { e.stopPropagation(); startIntro(); });
+    if ($.introStart) {
+      $.introStart.addEventListener('click', function (e) { e.stopPropagation(); startIntro(); });
+    }
     // never trap the page: auto-advance if nothing happens
     safetyTimer = window.setTimeout(startIntro, 14000);
   }
 
   /* ============================ WHISPERS ============================ */
   var WHISPERS = [
-    'Un ratito dulce basta para una sonrisa ✨',
-    'Las mejores tardes huelen a fresa 🍓',
-    'Hay planes que saben mejor en buena compañía 💗',
-    'Poco a poco, todo sabe más dulce 🍦'
+    'Un jueves cualquiera puede volverse inolvidable 🍓',
+    'Hay planes que saben mejor con fresa 🍦',
+    'Las mejores tardes se comparten 💗',
+    'Poco a poco, todo sabe más dulce ✨'
   ];
 
   function startWhispers() {
@@ -414,218 +400,66 @@
     }, 6500);
   }
 
-  /* ============================ NO BUTTON ============================ */
-  var noTexts = [
-    'NO, GRACIAS 🙈',
-    '¿Segurita? 👀',
-    '¿Y un heladito de fresa? 🍓',
-    'Piénsalo dulcemente 🍦',
-    'Una tarde bonita... ¿quizás? ✨',
-    '¿Segura, segurita? 🥺'
-  ];
-  var dodgeCount = 0;
-  var MAX_DODGES = 5;
-  var noSettled = false;
+  /* ============================ INVITATION RESPONSES ============================ */
+  function revealYes() {
+    celebrate();
+    announce('¡Qué bonito! Dime a qué hora te viene bien, si quieres.');
+    window.setTimeout(function () {
+      show($.respYes, $.timeInput || $.btnBackInvite1);
+    }, reduceMotion ? 220 : 900);
+  }
 
-  function resetNo() {
-    dodgeCount = 0;
-    noSettled = false;
-    if ($.btnNo) {
-      $.btnNo.style.transform = '';
-      $.btnNo.classList.remove('is-dodging');
-      $.btnNo.textContent = noTexts[0];
+  function revealLater() {
+    announce('Claro, Lia. Me dices cuando puedas y coordinamos.');
+    show($.respLater, $.btnBackInvite2);
+  }
+
+  function backToInvite(fromEl) {
+    hide(fromEl, false);
+    if ($.btnLoveIt) {
+      try { $.btnLoveIt.focus(); } catch (e) { /* ignore */ }
     }
+    announce('Has vuelto a la invitación.');
   }
 
-  function dodgeNo() {
-    if (!$.btnNo || noSettled || reduceMotion) return;
-    var field = $.btnNo.parentElement;
-    if (!field) return;
-    var fw = field.clientWidth, fh = field.clientHeight;
-    var bw = $.btnNo.offsetWidth, bh = $.btnNo.offsetHeight;
-    var maxX = Math.max(0, (fw - bw) / 2 - 4);
-    var maxY = Math.max(0, (fh - bh) / 2 - 4);
-    if (maxX < 8 && maxY < 8) { noSettled = true; return; }
+  function setupResponses() {
+    if ($.btnLoveIt) $.btnLoveIt.addEventListener('click', revealYes);
+    if ($.btnLater) $.btnLater.addEventListener('click', revealLater);
 
-    $.btnNo.classList.add('is-dodging');
-    var x = 0, y = 0, tries = 0;
-    // aim for a noticeably different spot
-    do {
-      x = rand(-maxX, maxX);
-      y = rand(-maxY, maxY);
-      tries++;
-    } while (tries < 6 && Math.abs(x) < maxX * 0.34 && Math.abs(y) < maxY * 0.34 && (maxX > 20 || maxY > 20));
+    if ($.btnBackInvite1) $.btnBackInvite1.addEventListener('click', function () { backToInvite($.respYes); });
+    if ($.btnBackInvite2) $.btnBackInvite2.addEventListener('click', function () { backToInvite($.respLater); });
 
-    $.btnNo.style.transform = 'translate(' + x.toFixed(1) + 'px, ' + y.toFixed(1) + 'px)';
-    dodgeCount++;
-    $.btnNo.textContent = noTexts[Math.min(dodgeCount, noTexts.length - 1)];
-    if (dodgeCount >= MAX_DODGES) noSettled = true;
-  }
-
-  function chooseNo() {
-    hide($.intro);
-    show($.noScreen, $.btnBack);
-    announce('Está bien, Lia. La invitación sigue aquí cuando quieras.');
-  }
-
-  function setupNo() {
-    if (!$.btnNo) return;
-
-    // Desktop: playful dodge when the pointer comes near
-    if (!isTouch && !reduceMotion) {
-      var card = $.btnNo.closest('.glass-card') || document;
-      var throttle = false;
-      card.addEventListener('mousemove', function (e) {
-        if (noSettled || throttle) return;
-        var r = $.btnNo.getBoundingClientRect();
-        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-        var dist = Math.hypot(e.clientX - cx, e.clientY - cy);
-        if (dist < Math.max(r.width, r.height) * 0.9 + 40) {
-          throttle = true;
-          window.setTimeout(function () { throttle = false; }, 260);
-          dodgeNo();
-        }
-      });
-    }
-
-    // Click / tap
-    $.btnNo.addEventListener('click', function () {
-      if (reduceMotion || noSettled || dodgeCount >= MAX_DODGES) { chooseNo(); }
-      else { dodgeNo(); }
-    });
-
-    // Keyboard: let it be chosen directly (accessible)
-    $.btnNo.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
-        e.preventDefault();
-        chooseNo();
-      }
-    });
-
-    if ($.btnBack) $.btnBack.addEventListener('click', function () {
-      hide($.noScreen, false);
-      resetNo();
-      if ($.btnYes) $.btnYes.focus();
-      announce('De vuelta en la invitación.');
+    // Escape closes whichever overlay is open, back to the invitation.
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' && e.key !== 'Esc') return;
+      if ($.respYes && $.respYes.classList.contains('is-active')) backToInvite($.respYes);
+      else if ($.respLater && $.respLater.classList.contains('is-active')) backToInvite($.respLater);
     });
   }
 
-  /* ============================ YES FLOW ============================ */
-  function setupYes() {
-    if ($.btnYes) $.btnYes.addEventListener('click', function () {
-      celebrate();
-      announce('¡Genial! Solo una última pregunta.');
-      window.setTimeout(function () { show($.sure, $.btnSure); }, reduceMotion ? 200 : 2200);
-    });
+  /* ============================ OPTIONAL TIME ============================ */
+  var fmtTime = null;
+  try { fmtTime = new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit' }); } catch (e) { /* ignore */ }
 
-    if ($.btnSure) $.btnSure.addEventListener('click', function () {
-      celebrate();
-      announce('¡Cita confirmada! Elige el día y la hora si quieres.');
-      window.setTimeout(function () { show($.finalScreen, $.dateInput); }, reduceMotion ? 200 : 1800);
-    });
-
-    if ($.btnThink) $.btnThink.addEventListener('click', function () {
-      hide($.sure, false);
-      if ($.btnYes) $.btnYes.focus();
-      announce('Sin prisa. La invitación sigue esperando.');
-    });
-
-    if ($.btnRestart) $.btnRestart.addEventListener('click', function () {
-      hide($.finalScreen, false);
-      resetNo();
-      resetDate();
-      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-      if ($.btnYes) $.btnYes.focus();
-      announce('Hemos vuelto al principio de la invitación.');
-    });
+  function humanTime(value) {
+    var tt = new Date('2000-01-01T' + value + ':00');
+    if (fmtTime && !isNaN(tt)) return fmtTime.format(tt);
+    return value;
   }
 
-  /* ============================ DATE / TIME ============================ */
-  var fmtDate = null, fmtTime = null;
-  try {
-    fmtDate = new Intl.DateTimeFormat('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
-    fmtTime = new Intl.DateTimeFormat('es-ES', { hour: '2-digit', minute: '2-digit' });
-  } catch (e) { /* ignore */ }
-
-  function hasDateValue() {
-    return ($.dateInput && $.dateInput.value) || ($.timeInput && $.timeInput.value);
-  }
-
-  function buildConfirmText(saving) {
-    var d = $.dateInput && $.dateInput.value;
-    var t = $.timeInput && $.timeInput.value;
-    var dateTxt = '', timeTxt = '';
-    if (d) {
-      var dd = new Date(d + 'T00:00:00');
-      dateTxt = fmtDate && !isNaN(dd) ? fmtDate.format(dd) : d;
-      dateTxt = dateTxt.charAt(0).toUpperCase() + dateTxt.slice(1);
-    }
-    if (t) {
-      var tt = new Date('2000-01-01T' + t + ':00');
-      timeTxt = fmtTime && !isNaN(tt) ? fmtTime.format(tt) : t;
-    }
-    if (!dateTxt && !timeTxt) {
-      return 'Aún no hay fecha, pero la invitación queda abierta para cuando quieras 💗';
-    }
-    var out = 'Perfecto 💗 ';
-    if (dateTxt && timeTxt) out += dateTxt + ' a las ' + timeTxt;
-    else if (dateTxt) out += dateTxt;
-    else out += 'A las ' + timeTxt;
-    out += saving ? '. ¡Nuestro plan queda anotado!' : '. ¿Le damos el visto bueno?';
-    return out;
-  }
-
-  function refreshConfirm(showIt) {
-    if (!$.dateConfirm) return;
-    if (showIt) {
-      $.dateConfirm.textContent = buildConfirmText(false);
-      $.dateConfirm.classList.add('is-shown');
-    } else {
-      $.dateConfirm.classList.remove('is-shown');
-    }
-  }
-
-  function resetDate() {
-    if ($.dateInput) $.dateInput.value = '';
-    if ($.timeInput) $.timeInput.value = '';
-    if ($.dateConfirm) { $.dateConfirm.classList.remove('is-shown'); $.dateConfirm.textContent = ''; }
-    if ($.btnEditDate) $.btnEditDate.hidden = true;
-    if ($.btnFinalSave) $.btnFinalSave.hidden = false;
-    setDateEditing(true);
-  }
-
-  function setDateEditing(editing) {
-    if ($.dateInput) $.dateInput.disabled = !editing;
-    if ($.timeInput) $.timeInput.disabled = !editing;
-  }
-
-  function setupDate() {
-    if ($.dateInput) $.dateInput.addEventListener('change', function () { refreshConfirm(hasDateValue()); });
-    if ($.timeInput) $.timeInput.addEventListener('change', function () { refreshConfirm(hasDateValue()); });
-
-    if ($.btnFinalSave) $.btnFinalSave.addEventListener('click', function () {
-      if (hasDateValue()) {
-        if ($.dateConfirm) { $.dateConfirm.textContent = buildConfirmText(true); $.dateConfirm.classList.add('is-shown'); }
-        if ($.btnFinalSave) $.btnFinalSave.hidden = true;
-        if ($.btnEditDate) $.btnEditDate.hidden = false;
-        setDateEditing(false);
-        celebrate();
-        announce('¡Nuestro plan de heladitos queda anotado!');
+  function setupTime() {
+    if (!$.timeInput) return;
+    $.timeInput.addEventListener('change', function () {
+      if (!$.timeConfirm) return;
+      var v = $.timeInput.value;
+      if (v) {
+        $.timeConfirm.textContent = 'Perfecto 💗 A las ' + humanTime(v) + ' entonces. Aquí se queda anotado.';
+        $.timeConfirm.classList.add('is-shown');
+        announce('Hora anotada: ' + humanTime(v));
       } else {
-        if ($.dateConfirm) {
-          $.dateConfirm.textContent = 'Sin fecha por ahora, no pasa nada: la invitación queda abierta 💗';
-          $.dateConfirm.classList.add('is-shown');
-        }
-        announce('Puedes elegir la fecha cuando quieras.');
+        $.timeConfirm.classList.remove('is-shown');
+        $.timeConfirm.textContent = '';
       }
-    });
-
-    if ($.btnEditDate) $.btnEditDate.addEventListener('click', function () {
-      if ($.btnEditDate) $.btnEditDate.hidden = true;
-      if ($.btnFinalSave) $.btnFinalSave.hidden = false;
-      setDateEditing(true);
-      refreshConfirm(false);
-      if ($.dateInput) $.dateInput.focus();
     });
   }
 
@@ -692,9 +526,8 @@
     FX.init();
     setupIntro();
     setupMusic();
-    setupNo();
-    setupYes();
-    setupDate();
+    setupResponses();
+    setupTime();
     setupGallery();
     setupReveal();
     setupScrollUI();
